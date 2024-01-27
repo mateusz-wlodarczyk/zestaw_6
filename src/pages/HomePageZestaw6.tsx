@@ -28,8 +28,7 @@ import { loadPokemon } from '../utils/fetchPokomen';
 import { IsLoadingInfo } from '../components/isLoadingInfo';
 import { IsErrorInfo } from '../components/isErrorInfo';
 import { ButtonLoadSX } from '../utils/style';
-//importy ??
-import { useMutation } from 'react-query';
+
 import { useQuery } from 'react-query';
 
 export const HomePageZestaw6 = () => {
@@ -41,17 +40,17 @@ export const HomePageZestaw6 = () => {
   // nie wymaga komentarza, scrolluj dalej
   const url = `${URL_POKEMON}${URL_ABILITY_TEXT}${URL_LIMIT_TEXT}${
     URL_LIMIT_NUMBER + loadedPokemonsNumber
-  }${URL_OFFSET_TEXT}${URL_OFFSET_NUMBER + loadedPokemonsNumber}`;
+  }${URL_OFFSET_TEXT}${URL_OFFSET_NUMBER}`;
 
-  // otypowanie tego?
-  //jak ogarnac, zeby ladowal kolejne 20 a nie ciagle od nowa?
   const {
     data: loadedPokemons,
     isLoading,
     error,
   } = useQuery({
     queryKey: ['pokemonData', loadedPokemonsNumber],
+
     queryFn: () => loadPokemon(url),
+    keepPreviousData: true,
   });
 
   // hook?
