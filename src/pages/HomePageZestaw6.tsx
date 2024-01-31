@@ -30,6 +30,7 @@ import { IsErrorInfo } from '../components/isErrorInfo';
 import { ButtonLoadSX } from '../utils/style';
 
 import { useQuery } from 'react-query';
+import { PokemonGroupType, PokemonType } from '../utils/types';
 
 export const HomePageZestaw6 = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -46,25 +47,25 @@ export const HomePageZestaw6 = () => {
     data: loadedPokemons,
     isLoading,
     error,
-  } = useQuery({
+    //jak to otypowac
+  } = useQuery<PokemonType>({
     queryKey: ['pokemonData', loadedPokemonsNumber],
 
     queryFn: () => loadPokemon(url),
     keepPreviousData: true,
   });
 
-  // hook?
   const handleMorePokemons = () => {
     setPokemonsNumber((num) => num + URL_LIMIT_NUMBER);
   };
-  // hook?
+
   const handleClickedPokemon = async (url: string) => {
     setLoadedClickedPokemon(url);
   };
 
   if (isLoading) return <IsLoadingInfo />;
   if (error) return <IsErrorInfo />;
-
+  console.log(loadedPokemons);
   return (
     <>
       <Flex alignItems='center'>

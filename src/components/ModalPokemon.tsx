@@ -15,6 +15,7 @@ import { loadPokemon } from '../utils/fetchPokomen';
 import { useQuery } from 'react-query';
 import { IsLoadingInfo } from './isLoadingInfo';
 import { IsErrorInfo } from './isErrorInfo';
+import { useGetClickedPokemon } from '../utils/queries';
 
 export const ModalPokemon = ({
   isOpen,
@@ -25,10 +26,7 @@ export const ModalPokemon = ({
   loadedClickedPokemon: string;
   onClose: () => void;
 }) => {
-  const { data, isLoading, error } = useQuery({
-    queryKey: ['pokemonDataSingleDetail', loadedClickedPokemon],
-    queryFn: () => loadPokemon(loadedClickedPokemon),
-  });
+  const { data, isLoading, error } = useGetClickedPokemon(loadedClickedPokemon);
 
   if (isLoading) return <IsLoadingInfo />;
   if (error) return <IsErrorInfo />;

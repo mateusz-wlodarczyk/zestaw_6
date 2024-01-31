@@ -1,12 +1,7 @@
-import axios from 'axios';
+import axios, { AxiosResponse } from 'axios';
+import { PokemonGroupType } from './types';
 
-export const loadPokemon = async (url: string) => {
-  console.log(url);
-  try {
-    const data = await axios.get(url);
-    return data.data;
-  } catch (err) {
-    console.log(err);
-    return err;
-  }
+export const loadPokemon = async (url: string): Promise<PokemonGroupType> => {
+  const response = await axios.get(url);
+  return response.data;
 };

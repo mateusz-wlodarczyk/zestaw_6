@@ -80,11 +80,7 @@
     "no-unused-vars": "error",
     "no-use-before-define": "error",
     "no-magic-numbers": "error",
-    "sort-keys": [
-      "error",
-      "asc",
-      { "caseSensitive": false, "natural": true, "minKeys": 2 }
-    ],
+    "sort-keys": ["error", "asc", { "caseSensitive": false, "natural": true, "minKeys": 2 }],
     "sort-vars": ["error", { "ignoreCase": true }],
     "react/jsx-sort-props": [
       "error",
@@ -98,10 +94,7 @@
         "locale": "auto"
       }
     ],
-    "sort-destructure-keys/sort-destructure-keys": [
-      "error",
-      { "caseSensitive": false }
-    ],
+    "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
     "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 0, "maxEOF": 1 }]
   },
   "settings": {
